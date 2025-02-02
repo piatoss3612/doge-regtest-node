@@ -1,13 +1,19 @@
-# Dogecoin Regtest Node Setup
+# Dogecoin Regtest Node for Testing
 
-## 1. Container Build and Run
+## Container Build and Run
 
 ```bash
-make build
+make up BUILD=1
 ```
 
-## 2. Create New Address
+## Help
 
 ```bash
-make newaddress
+make help
+```
+
+## Help for dogecoin-cli
+
+```bash
+make helpdoge
 ```
