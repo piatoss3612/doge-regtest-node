@@ -291,6 +291,37 @@ estimatefee:
 	echo "Estimating fee for $$blocks blocks"; \
 	$(CLI) estimatefee $$blocks
 
+# estimatesmartfee
+#   Estimates the approximate fee per kilobyte needed for a transaction to begin
+#   confirmation within nblocks blocks if possible and return the number of blocks
+#   for which the estimate is valid. Uses virtual transaction size as defined
+#   in BIP 141 (witness data is discounted).
+
+# WARNING: This interface is unstable and may disappear or change!
+
+# Estimates the approximate fee per kilobyte needed for a transaction to begin
+# confirmation within nblocks blocks if possible and return the number of blocks
+# for which the estimate is valid. Uses virtual transaction size as defined
+# in BIP 141 (witness data is discounted).
+
+# Arguments:
+#   nblocks     (numeric)
+
+# Result:
+#   {
+#     "feerate" : x.x,     (numeric) estimate fee-per-kilobyte (in BTC)
+#     "blocks" : n         (numeric) block number where estimate was found
+#   }
+
+# A negative value is returned if not enough transactions and blocks
+# have been observed to make an estimate for any number of blocks.
+# However it will not return a value below the mempool reject fee.
+estimatesmartfee:
+	@read -p "Enter the number of blocks to estimate fee for: " blocks; \
+	echo "Estimating fee for $$blocks blocks"; \
+	$(CLI) estimatesmartfee $$blocks
+
+
 # sendfrom
 #   Sent an amount from an account to a dogecoin address.
 #
